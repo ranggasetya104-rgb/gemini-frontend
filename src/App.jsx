@@ -37,37 +37,48 @@ function App() {
     setLoading(false);
   };
 
-  return (
-    <div style={{ padding: 30, fontFamily: "Arial" }}>
-      <h2>Gemini App</h2>
+    return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="w-full max-w-xl bg-white rounded-xl shadow-lg p-6 space-y-4">
 
-      <input
-        type="password"
-        placeholder="Masukkan API Key Gemini"
-        value={apiKey}
-        onChange={(e) => setApiKey(e.target.value)}
-        style={{ width: "100%", padding: 10, marginBottom: 10 }}
-      />
+        <h1 className="text-2xl font-semibold text-center">
+          Gemini Chat
+        </h1>
 
-      <textarea
-        placeholder="Tulis pesan..."
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        style={{ width: "100%", height: 120, padding: 10 }}
-      />
+        <input
+          type="password"
+          placeholder="API Key Gemini"
+          value={apiKey}
+          onChange={(e) => setApiKey(e.target.value)}
+          className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring"
+        />
 
-      <button onClick={sendMessage} style={{ marginTop: 10 }}>
-        {loading ? "Mengirim..." : "Kirim"}
-      </button>
+        <textarea
+          placeholder="Tulis pertanyaan..."
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          rows={4}
+          className="w-full border rounded-lg px-4 py-2 resize-none focus:outline-none focus:ring"
+        />
 
-      {reply && (
-        <div style={{ marginTop: 20 }}>
-          <strong>Balasan:</strong>
-          <p>{reply}</p>
-        </div>
-      )}
+        <button
+          onClick={sendMessage}
+          disabled={loading}
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50"
+        >
+          {loading ? "Mengirim..." : "Kirim"}
+        </button>
+
+        {reply && (
+          <div className="bg-gray-50 border rounded-lg p-4 text-sm whitespace-pre-wrap">
+            {reply}
+          </div>
+        )}
+
+      </div>
     </div>
   );
 }
+
 
 export default App;
