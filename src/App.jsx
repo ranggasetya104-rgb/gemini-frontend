@@ -12,7 +12,7 @@ function App() {
     setReply("");
 
     try {
-      const response = await fetch("https://gemini-backend-plum-six.vercel.app/api/chat", {
+      const response = await fetch("https://gemini-backend-p1o2.vercel.app/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
